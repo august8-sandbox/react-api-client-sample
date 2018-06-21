@@ -7,6 +7,7 @@
 * [webpack](https://webpack.github.io/)
 * [Babel](https://babeljs.io/)
 * [ESLint](http://eslint.org/)
+* [Prettier](https://github.com/prettier/prettier)
 
 ## Package installation
 

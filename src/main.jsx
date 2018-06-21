@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import App from './components/App';
 
 ReactDOM.render(
-  <div>Hello World</div>
-  , document.getElementById('container'),
+  <MuiThemeProvider>
+    <App />
+  </MuiThemeProvider>,
+  document.getElementById('container')
 );

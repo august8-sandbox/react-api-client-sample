@@ -5,58 +5,52 @@ import packageInfo from './package.json';
 
 export default {
   mode: 'development',
-  entry: [
-    path.join(__dirname, 'src/main'),
-  ],
+  entry: [path.join(__dirname, 'src/main')],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   module: {
-    rules: [{
-      test: /\.css$/,
-      use: [{
-        loader: 'style-loader',
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        ]
       },
       {
-        loader: 'css-loader',
-        options: {
-          modules: true,
-        },
-      },
-      ],
-    },
-    {
-      test: /\.jsx?$/,
-      loader: 'babel-loader',
-      exclude: /node_modules/,
-    },
-    ],
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      }
+    ]
   },
   resolve: {
-    modules: [
-      path.join(__dirname, 'src'),
-      'node_modules',
-    ],
-    extensions: [
-      '.js',
-      '.jsx',
-    ],
+    modules: [path.join(__dirname, 'src'), 'node_modules'],
+    extensions: ['.js', '.jsx']
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'production'),
-        PACKAGE_VERSION: JSON.stringify(packageInfo.version),
-      },
+        PACKAGE_VERSION: JSON.stringify(packageInfo.version)
+      }
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
   devtool: 'source-map',
   devServer: {
     compress: true,
     contentBase: path.join(__dirname, 'dist'),
     historyApiFallback: true,
-    hot: true,
-  },
+    hot: true
+  }
 };
