@@ -6,9 +6,7 @@ import RecordItem from './RecordItem';
 export default class RecordList extends React.Component {
   render() {
     const recordList = this.props.recordList.map(step => {
-      const record = (
-        <RecordItem indexNo={step.recId} primaryText={step.description} />
-      );
+      const record = <RecordItem indexNo={step.id} primaryText={step.name} />;
       return record;
     });
 
@@ -19,8 +17,8 @@ export default class RecordList extends React.Component {
 RecordList.propTypes = {
   recordList: PropTypes.arrayOf(
     PropTypes.shape({
-      recId: PropTypes.number,
-      description: PropTypes.string
+      id: PropTypes.number,
+      name: PropTypes.string
     })
   )
 };
